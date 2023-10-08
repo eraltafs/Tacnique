@@ -8,8 +8,10 @@ const { taskRouter } = require("./routes/task.routes");
 const { authenticate } = require("./middlewares/autheticate");
 const { log_data } = require("./middlewares/log_data");
 const { limiter } = require("./middlewares/ratelLimitor");
+require("dotenv").config();
 
-const port = 8000;
+// access port from env
+const port = process.env.PORT;
 
 const app = express();
 
