@@ -1,4 +1,4 @@
-const exoress = require("express");
+const express = require("express");
 const cors = require("cors");
 
 const { connection } = require("./config/db");
@@ -6,21 +6,32 @@ const { userRouter } = require("./routes/user.routes");
 const { taskRouter } = require("./routes/task.routes");
 const { authenticate } = require("./middlewares/autheticate");
 
-port = 8000;
+const port = 8000;
 
-const app = exoress();
+const app = express();
+
+// Enable CORS middleware to allow cross-origin requests
 app.use(cors());
-app.use(exoress.json());
 
+// Parse JSON request bodies
+app.use(express.json());
+
+// Base route
 app.get("/", (req, res) => {
-  res.status(200).send({ msg: "base api" });
+  res.status(200).send({ message: "Welcome to the base API" });
 });
-app.use("/user", userRouter)
-app.use(authenticate)
-app.use("/task",taskRouter)
 
+// User routes
+app.use("/user", userRouter);
+
+// Authentication middleware
+app.use(authenticate);
+
+// Task routes
+app.use("/task", taskRouter);
 
 app.listen(port, () => {
+  // Establish a connection to the database
   connection();
-  console.log("listening");
+  console.log("Server is listening on port " + port);
 });
