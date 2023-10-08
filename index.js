@@ -1,6 +1,8 @@
 const exoress = require("express");
 const cors = require("cors");
 
+const { connection } = require("./config/db");
+
 port = 8000;
 
 const app = exoress();
@@ -12,5 +14,6 @@ app.get("/", (req, res) => {
 });
 
 app.listen(port, () => {
+  connection();
   console.log("listening");
 });
