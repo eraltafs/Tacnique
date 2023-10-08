@@ -6,10 +6,12 @@ const task_add = async (req, res) => {
   const { title, description } = req.body;
   const creation_date = new Date();
 
+  // Convert the UTC time to Indian time (+5:30)
   creation_date.setUTCHours(creation_date.getUTCHours() + 5);
   creation_date.setUTCMinutes(creation_date.getUTCMinutes() + 30);
 
   try {
+    // Create a new task with the provided data
     const task = new taskModel({ title, description, creation_date, user_id });
     await task.save();
     res.status(201).send({ msg: "Task added successfully", task });
@@ -23,6 +25,7 @@ const task_add = async (req, res) => {
 const get_all_task = async (req, res) => {
   const { user_id } = req.user;
   try {
+    // Find all tasks belonging to the user
     const tasks = await taskModel.find({ user_id });
     res.status(200).send(tasks);
   } catch (error) {
@@ -36,6 +39,7 @@ const get_task = async (req, res) => {
   const { id } = req.params;
   const { user_id } = req.user;
   try {
+    // Find a task by its ID
     const task = await taskModel.findOne({ _id: id });
     if (!task) {
       return res.status(404).send({ msg: "Task not found" });
@@ -58,11 +62,13 @@ const update_task = async (req, res) => {
   const { user_id } = req.user;
   const payload = req.body;
   try {
+    // Find a task by its ID
     const task = await taskModel.findOne({ _id: id });
     if (!task) {
       return res.status(404).send({ msg: "Task not found" });
     }
     if (task.user_id == user_id) {
+      // Update the task with the provided payload
       await taskModel.findByIdAndUpdate(id, payload);
       return res.status(200).send({ msg: "Task updated successfully" });
     }
@@ -80,11 +86,13 @@ const delete_task = async (req, res) => {
   const { id } = req.params;
   const { user_id } = req.user;
   try {
+    // Find a task by its ID
     const task = await taskModel.findOne({ _id: id });
     if (!task) {
       return res.status(404).send({ msg: "Task not found" });
     }
     if (task.user_id == user_id) {
+      // Delete the task
       await taskModel.findByIdAndDelete(id);
       return res.status(200).send({ msg: "Task deleted successfully" });
     }

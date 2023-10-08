@@ -1,29 +1,30 @@
 const jwt = require("jsonwebtoken");
-require("dotenv").config()
+require("dotenv").config();
 
-const authenticate = (req,res,next)=>{
-    const token = req.headers.authenticate
-    
-    try {
-        if(token){
-            jwt.verify(token,process.env.jwtkey,(err,decoded)=>{
-                if(decoded){
-                    req.user=decoded
-                    
-                    next()
-                }else{
-                    console.log(err)
-                    res.send("you are not authorised")
-                }
-            })
-        }else{
-            res.send("please login")
+// Middleware for authentication
+const authenticate = (req, res, next) => {
+  const token = req.cookies.token||req.headers.authenticate; // token from the request headers
+
+  try {
+    if (token) {
+      // Verify the token using the JWT secret key from environment variables
+      jwt.verify(token, process.env.jwtkey, (err, decoded) => {
+        if (decoded) {
+          req.user = decoded;
+          next(); // Move to the next function
+        } else {
+          console.log(err);
+          res.status(403).send("You are not authorized"); 
         }
-        
-    } catch (error) {
-        console.log(error)
-        res.send("server error")
+      });
+    } else {
+        // if no token 
+      res.status(401).send("Please login"); 
     }
-}
+  } catch (error) {
+    console.log(error);
+    res.status(500).send("Server error"); // Server Error for unexpected errors
+  }
+};
 
-module.exports = {authenticate}
+module.exports = { authenticate };

@@ -1,5 +1,6 @@
 const express = require("express");
 const cors = require("cors");
+const cookieParser = require("cookie-parser"); // Import cookie-parser
 
 const { connection } = require("./config/db");
 const { userRouter } = require("./routes/user.routes");
@@ -17,7 +18,10 @@ app.use(cors());
 
 // Parse JSON request bodies
 app.use(express.json());
+// Use cookie-parser middleware to parse cookies
+app.use(cookieParser());
 
+//use log api middleware
 app.use(log_data);
 
 // Base route
