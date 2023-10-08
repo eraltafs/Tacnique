@@ -5,7 +5,8 @@ const { connection } = require("./config/db");
 const { userRouter } = require("./routes/user.routes");
 const { taskRouter } = require("./routes/task.routes");
 const { authenticate } = require("./middlewares/autheticate");
-
+const { log_data } = require("./middlewares/log_data");
+const { limiter } = require("./middlewares/ratelLimitor");
 const port = 8000;
 
 const app = express();
@@ -15,6 +16,8 @@ app.use(cors());
 
 // Parse JSON request bodies
 app.use(express.json());
+
+app.use(log_data);
 
 // Base route
 app.get("/", (req, res) => {
@@ -28,7 +31,7 @@ app.use("/user", userRouter);
 app.use(authenticate);
 
 // Task routes
-app.use("/task", taskRouter);
+app.use("/task",limiter, taskRouter);
 
 app.listen(port, () => {
   // Establish a connection to the database
