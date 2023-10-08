@@ -5,6 +5,8 @@ const { connection } = require("./config/db");
 const { userRouter } = require("./routes/user.routes");
 const { taskRouter } = require("./routes/task.routes");
 const { authenticate } = require("./middlewares/autheticate");
+const { log_data } = require("./middlewares/log_data");
+const { limiter } = require("./middlewares/ratelLimitor");
 
 const port = 8000;
 
