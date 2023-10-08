@@ -3,6 +3,7 @@ const cors = require("cors");
 
 const { connection } = require("./config/db");
 const { userRouter } = require("./routes/user.routes");
+const { taskRouter } = require("./routes/task.routes");
 const { authenticate } = require("./middlewares/autheticate");
 
 port = 8000;

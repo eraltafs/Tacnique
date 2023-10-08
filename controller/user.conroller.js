@@ -8,23 +8,23 @@ const user_register =  async (req, res) => {
     const user = await UserModel.findOne({ email });
     console.log(user);
     if (user) {
-      return res.send("user exists");
+      return res.send({msg:"user exists"});
     }
     try {
       bcrypt.hash(password, 5, async (err, result) => {
         if (err) {
           console.log(err);
-          res.send("user not created");
+          res.send({msg:"user not created"});
         }
         if (result) {
           const user = new UserModel({ name, email, password: result });
           await user.save();
-          res.send("user created");
+          res.send({msg:"user created"});
         }
       });
     } catch (error) {
       console.log(error);
-      res.status(500).send("internal server err");
+      res.status(500).send({msg:"internal server err"});
     }
 }
   const user_login =  async (req, res) => {
@@ -48,7 +48,7 @@ const user_register =  async (req, res) => {
       }
     } catch (error) {
       console.log(error);
-      res.status(500).send("internal server error");
+      res.status(500).send({msg:"internal server error"});
     }
   }
 
