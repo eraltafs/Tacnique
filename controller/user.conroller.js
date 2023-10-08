@@ -26,7 +26,7 @@ const user_register = async (req, res) => {
         // Create a new user with the hashed password
         const newUser = new UserModel({ name, email, password: hashedPassword });
         await newUser.save();
-        res.send({ msg: "User created successfully" });
+        res.status(201).send({ msg: "User created successfully" });
       }
     });
   } catch (error) {
@@ -59,10 +59,10 @@ const user_login = async (req, res) => {
             secure: true, // Enable secure cookies (HTTPS)
           });
 
-          return res.send({ msg: "Login success", token });
+          return res.status(200).send({ msg: "Login success", token });
         } else {
           console.log(err);
-          return res.send({ msg: "Wrong credentials" });
+          return res.status(401).send({ msg: "Wrong credentials" });
         }
       });
     }

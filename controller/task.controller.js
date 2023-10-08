@@ -17,7 +17,7 @@ const task_add = async (req, res) => {
     res.status(201).send({ msg: "Task added successfully", task });
   } catch (error) {
     console.error(error);
-    return res.status(500).send({ msg: "Server error" });
+    return res.status(500).send({ msg: "internal server error" });
   }
 };
 
@@ -30,7 +30,7 @@ const get_all_task = async (req, res) => {
     res.status(200).send(tasks);
   } catch (error) {
     console.error(error);
-    return res.status(500).send({ msg: "Server error" });
+    return res.status(500).send({ msg: "internal server error" });
   }
 };
 
@@ -42,17 +42,16 @@ const get_task = async (req, res) => {
     // Find a task by its ID
     const task = await taskModel.findOne({ _id: id });
     if (!task) {
+      
       return res.status(404).send({ msg: "Task not found" });
     }
     if (task.user_id == user_id) {
       return res.status(200).send(task);
     }
-    return res
-      .status(403)
-      .send({ msg: "You are not allowed to get another person's task" });
+    return res.status(401).send({ msg: "Unauthorized access" });
   } catch (error) {
     console.error(error);
-    return res.status(500).send({ msg: "Server error" });
+    return res.status(500).send({ msg: "internal server error" });
   }
 };
 
@@ -65,19 +64,18 @@ const update_task = async (req, res) => {
     // Find a task by its ID
     const task = await taskModel.findOne({ _id: id });
     if (!task) {
+      
       return res.status(404).send({ msg: "Task not found" });
     }
     if (task.user_id == user_id) {
       // Update the task with the provided payload
       await taskModel.findByIdAndUpdate(id, payload);
-      return res.status(200).send({ msg: "Task updated successfully" });
+      return res.status(202).send();
     }
-    return res
-      .status(403)
-      .send({ msg: "You are not allowed to update another person's task" });
+    return res.status(401).send({ msg: "Unauthorized access" });
   } catch (error) {
     console.error(error);
-    return res.status(500).send({ msg: "Server error" });
+    return res.status(500).send({ msg: "internal server error" });
   }
 };
 
@@ -89,19 +87,18 @@ const delete_task = async (req, res) => {
     // Find a task by its ID
     const task = await taskModel.findOne({ _id: id });
     if (!task) {
+      
       return res.status(404).send({ msg: "Task not found" });
     }
     if (task.user_id == user_id) {
       // Delete the task
       await taskModel.findByIdAndDelete(id);
-      return res.status(200).send({ msg: "Task deleted successfully" });
+      return res.status(204).send();
     }
-    return res
-      .status(403)
-      .send({ msg: "You are not allowed to delete another person's task" });
+    return res.status(401).send({ msg: "Unauthorized access" });
   } catch (error) {
     console.error(error);
-    return res.status(500).send({ msg: "Server error" });
+    return res.status(500).send({ msg: "internal server error" });
   }
 };
 
