@@ -3,6 +3,7 @@ const cors = require("cors");
 
 const { connection } = require("./config/db");
 const { userRouter } = require("./routes/user.routes");
+const { authenticate } = require("./middlewares/autheticate");
 
 port = 8000;
 
@@ -14,6 +15,7 @@ app.get("/", (req, res) => {
   res.status(200).send({ msg: "base api" });
 });
 app.use("/user", userRouter)
+app.use(authenticate)
 
 app.listen(port, () => {
   connection();
