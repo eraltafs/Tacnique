@@ -36,7 +36,7 @@ const user_register =  async (req, res) => {
         bcrypt.compare(password, user.password, (err, result) => {
           if (result) {
             const token = jwt.sign(
-              { email, role: user.role },
+              { user_id:user._id,email, role: user.role },
               process.env.jwtkey
             );
             return res.send({ msg: "login success", token });
