@@ -5,7 +5,7 @@ const { connection } = require("./config/db");
 const { userRouter } = require("./routes/user.routes");
 const { taskRouter } = require("./routes/task.routes");
 const { authenticate } = require("./middlewares/autheticate");
-
+const { log_data } = require("./middlewares/log_data");
 const port = 8000;
 
 const app = express();
@@ -15,6 +15,8 @@ app.use(cors());
 
 // Parse JSON request bodies
 app.use(express.json());
+
+app.use(log_data);
 
 // Base route
 app.get("/", (req, res) => {
