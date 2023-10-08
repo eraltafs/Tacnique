@@ -1,7 +1,0 @@
-{"level":"info","message":"[Sun Oct 08 2023 13:16:44 GMT+0530 (India Standard Time)] Method:POST URL:/user/register from ::1"}
-{"level":"info","message":"[Sun Oct 08 2023 13:16:49 GMT+0530 (India Standard Time)] Method:POST URL:/user/login from ::1"}
-{"level":"info","message":"[Sun Oct 08 2023 13:17:39 GMT+0530 (India Standard Time)] Method:POST URL:/task from ::1"}
-{"level":"info","message":"[Sun Oct 08 2023 13:18:01 GMT+0530 (India Standard Time)] Method:GET URL:/task from ::1"}
-{"level":"info","message":"[Sun Oct 08 2023 13:18:19 GMT+0530 (India Standard Time)] Method:GET URL:/task/6522500ca9660a0704f7e2e6 from ::1"}
-{"level":"info","message":"[Sun Oct 08 2023 13:18:29 GMT+0530 (India Standard Time)] Method:PUT URL:/task/6522500ca9660a0704f7e2e6 from ::1"}
-{"level":"info","message":"[Sun Oct 08 2023 13:18:52 GMT+0530 (India Standard Time)] Method:DELETE URL:/task/65225e9be46dd2810c6db76d from ::1"}
