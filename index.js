@@ -16,6 +16,8 @@ app.get("/", (req, res) => {
 });
 app.use("/user", userRouter)
 app.use(authenticate)
+app.use("/task",taskRouter)
+
 
 app.listen(port, () => {
   connection();
