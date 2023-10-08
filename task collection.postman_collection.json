@@ -1,0 +1,259 @@
+{
+	"info": {
+		"_postman_id": "2d004ccb-2d0f-499e-961e-68851f1cbc09",
+		"name": "task collection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "24607223"
+	},
+	"item": [
+		{
+			"name": "user register",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\":\"jag\",\r\n    \"email\":\"jag@g.com\",\r\n    \"password\":\"pass\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://tacnique-yevh.onrender.com/user/register",
+					"protocol": "https",
+					"host": [
+						"tacnique-yevh",
+						"onrender",
+						"com"
+					],
+					"path": [
+						"user",
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "user login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\":\"jag@g.com\",\r\n    \"password\":\"pass\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://tacnique-yevh.onrender.com/user/login",
+					"protocol": "https",
+					"host": [
+						"tacnique-yevh",
+						"onrender",
+						"com"
+					],
+					"path": [
+						"user",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add Task",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "authenticate",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNjUyMjRmZjhhOTY2MGEwNzA0ZjdlMmUzIiwiZW1haWwiOiJqYWdAZy5jb20iLCJpYXQiOjE2OTY3NTEyMDl9.Xm4x0U3XQnsfAjECkxdJvy9k7gIT7CEo4FmCNF1Arog",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"title\": \"Learn react hooks\",\r\n    \"description\":\"I will Learn react hooks\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://tacnique-yevh.onrender.com/task",
+					"protocol": "https",
+					"host": [
+						"tacnique-yevh",
+						"onrender",
+						"com"
+					],
+					"path": [
+						"task"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get all task",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "authenticate",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNjUyMjRmZjhhOTY2MGEwNzA0ZjdlMmUzIiwiZW1haWwiOiJqYWdAZy5jb20iLCJpYXQiOjE2OTY3NDc1MTZ9.7elEIiQHX2mT9yUGBfsEJHyOpKjGZ_Iqz4zscwdzuXE",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://tacnique-yevh.onrender.com//task",
+					"protocol": "https",
+					"host": [
+						"tacnique-yevh",
+						"onrender",
+						"com"
+					],
+					"path": [
+						"",
+						"task"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get task by id",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "authenticate",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNjUyMjRmZjhhOTY2MGEwNzA0ZjdlMmUzIiwiZW1haWwiOiJqYWdAZy5jb20iLCJpYXQiOjE2OTY3NDc1MTZ9.7elEIiQHX2mT9yUGBfsEJHyOpKjGZ_Iqz4zscwdzuXE",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"title\":\"update\",\r\n    \"status\":\"completed\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://tacnique-yevh.onrender.com/task/652280fc3563e4272f642770",
+					"protocol": "https",
+					"host": [
+						"tacnique-yevh",
+						"onrender",
+						"com"
+					],
+					"path": [
+						"task",
+						"652280fc3563e4272f642770"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get task by id",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "authenticate",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNjUyMjRmZjhhOTY2MGEwNzA0ZjdlMmUzIiwiZW1haWwiOiJqYWdAZy5jb20iLCJpYXQiOjE2OTY3NDc1MTZ9.7elEIiQHX2mT9yUGBfsEJHyOpKjGZ_Iqz4zscwdzuXE",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"title\":\"update\",\r\n    \"status\":\"completed\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://tacnique-yevh.onrender.com/task/652280fc3563e4272f642770",
+					"protocol": "https",
+					"host": [
+						"tacnique-yevh",
+						"onrender",
+						"com"
+					],
+					"path": [
+						"task",
+						"652280fc3563e4272f642770"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete task",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "authenticate",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNjUyMjRmZjhhOTY2MGEwNzA0ZjdlMmUzIiwiZW1haWwiOiJqYWdAZy5jb20iLCJpYXQiOjE2OTY3NDc1MTZ9.7elEIiQHX2mT9yUGBfsEJHyOpKjGZ_Iqz4zscwdzuXE",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"title\":\"update\",\r\n    \"status\":\"completed\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://tacnique-yevh.onrender.com/task/652283c89682e58548ac0016",
+					"protocol": "https",
+					"host": [
+						"tacnique-yevh",
+						"onrender",
+						"com"
+					],
+					"path": [
+						"task",
+						"652283c89682e58548ac0016"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

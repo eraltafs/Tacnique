@@ -2,6 +2,12 @@
 
 Brief project description goes here.
 
+### deployed project URL: https://tacnique-yevh.onrender.com
+### deployed postman collection URL: https://documenter.getpostman.com/view/24607223/2s9YJgTzwR
+### collection API:https://api.postman.com/collections/24607223-2d004ccb-2d0f-499e-961e-68851f1cbc09?access_key=PMAT-01HC7DFF904344DRCDVA2MFGZE
+### video demonstration URL:https://drive.google.com/drive/folders/1vXWXGElnPokTpJvlm3bVmwer-RT7rNMC?usp=sharing
+
+
 # API Documentation
 
 This is the documentation for the "inerview" API, which provides endpoints for user registration, user login, and managing tasks. You can run the server locally by cloning the [GitHub repository](https://github.com/eraltafs/Tacnique) and following the instructions in the README file.
